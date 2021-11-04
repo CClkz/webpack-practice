@@ -1,0 +1,42 @@
+{
+    "name": "webpack-practice",
+    "version": "1.0.0",
+    "description": "webpack",
+    "main": "src/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "serve": "node ./server.js",
+        "start": "webpack-dev-server",
+        "build:dev": "webpack --mode development",
+        "build:pro": "webpack --mode production"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/core": "^7.16.0",
+        "@babel/preset-env": "^7.16.0",
+        "babel-loader": "^8.2.3",
+        "clean-webpack-plugin": "^4.0.0",
+        "css-loader": "^6.4.0",
+        "express": "^4.17.1",
+        "file-loader": "^6.2.0",
+        "html-loader": "^3.0.0",
+        "html-webpack-plugin": "^5.3.2",
+        "image-webpack-loader": "^8.0.1",
+        "mini-css-extract-plugin": "^2.4.2",
+        "optimize-css-assets-webpack-plugin": "^6.0.1",
+        "path": "^0.12.7",
+        "style-loader": "^3.3.0",
+        "thread-loader": "^3.0.4",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.58.2",
+        "webpack-cli": "^4.9.0"
+    },
+    "dependencies": {
+        "core-js": "^3.19.1",
+        "regenerator-runtime": "^0.13.9"
+    },
+    "sideEffects": [
+        "*.css"
+    ]
+}

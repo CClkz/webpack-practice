@@ -1,0 +1,19 @@
+body {
+    background-color: plum;
+}
+
+#bg {
+    width: 300px;
+    height: 180px;
+    background: url(./imgs/win7.jpg) no-repeat;
+}
+
+#img img {
+    width: 300px;
+    height: 180px;
+}
+
+#imgjs img {
+    width: 300px;
+    height: 180px;
+}
