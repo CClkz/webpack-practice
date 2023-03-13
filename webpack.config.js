@@ -1,6 +1,7 @@
 // webpack.config.js
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   // 将入口文件指定为main.js
   entry: {
@@ -8,7 +9,7 @@ module.exports = {
     index: {
       // dependOn: 'main',
       import: path.resolve(__dirname, 'src', 'index.js'),
-      filename: 'index-file.js'
+      filename: 'index.js'
       // dependOn和runtime不应在同一个入口上同时使用,
       // TODO: 因为依赖另一个入口是要保持相同的chunk吗
       // runtime: 'chunk-index',
@@ -30,6 +31,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html')
-    })
+    }),
+    new CleanWebpackPlugin()
   ]
 }
