@@ -29,6 +29,8 @@ module.exports = {
   //   path: path.resolve(__dirname, 'home/proj/cdn/assets/[fullhash]'),
   //   publicPath: 'https://cdn.example.com/assets/[fullhash]/'
   // },
+  // 找模块路径
+  resolve: {},
   module: {
     rules: [
       {
@@ -43,5 +45,9 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
     new ConsoleLogOnBuildWebpackPlugin()
-  ]
+  ],
+  devServer: {
+    hot: true,
+    liveReload: true
+  }
 }
