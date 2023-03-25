@@ -3,6 +3,25 @@ const pluginName = 'ConsoleLogOnBuildWebpackPlugin'
 class ConsoleLogOnBuildWebpackPlugin {
   apply(compiler) {
     // console.log('compiler.hooks', Object.keys(compiler.hooks))
+    // compiler.hooks [
+    //   'initialize',          'shouldEmit',
+    //   'done',                'afterDone',
+    //   'additionalPass',      'beforeRun',
+    //   'run',                 'emit',
+    //   'assetEmitted',        'afterEmit',
+    //   'thisCompilation',     'compilation',
+    //   'normalModuleFactory', 'contextModuleFactory',
+    //   'beforeCompile',       'compile',
+    //   'make',                'finishMake',
+    //   'afterCompile',        'readRecords',
+    //   'emitRecords',         'watchRun',
+    //   'failed',              'invalid',
+    //   'watchClose',          'shutdown',
+    //   'infrastructureLog',   'environment',
+    //   'afterEnvironment',    'afterPlugins',
+    //   'afterResolvers',      'entryOption'
+    // ]
+
     compiler.hooks.run.tap(pluginName, compilation => {
       console.log('webpack 构建正在启动！')
     })

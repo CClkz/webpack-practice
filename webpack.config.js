@@ -4,9 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const ConsoleLogOnBuildWebpackPlugin = require('./plugins/ConsoleLogOnBuildWebpackPlugin')
 module.exports = {
+  mode: 'development',
   // 将入口文件指定为main.js
   entry: {
-    main: path.resolve(__dirname, 'src', 'main.js'),
+    // main: path.resolve(__dirname, 'src', 'main.js'),
     index: {
       // dependOn: 'main',
       import: path.resolve(__dirname, 'src', 'index.js'),
