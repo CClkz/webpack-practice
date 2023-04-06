@@ -1,7 +1,11 @@
 const pluginName = 'ConsoleLogOnBuildWebpackPlugin'
 
 class ConsoleLogOnBuildWebpackPlugin {
+  constructor() {
+    console.log('插件 constructor')
+  }
   apply(compiler) {
+    console.log('插件 apply')
     // console.log('compiler.hooks', Object.keys(compiler.hooks))
     // compiler.hooks [
     //   'initialize',          'shouldEmit',

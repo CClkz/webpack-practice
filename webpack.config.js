@@ -1,7 +1,7 @@
 // webpack.config.js
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const ConsoleLogOnBuildWebpackPlugin = require('./plugins/ConsoleLogOnBuildWebpackPlugin')
 module.exports = {
   mode: 'development',
@@ -22,7 +22,8 @@ module.exports = {
   // 将输出文件目录改为build/
   output: {
     path: path.resolve(__dirname, 'build'),
-    publicPath: ''
+    publicPath: '',
+    clean: true
     // filename: '[name].out.js'
   },
   // CDN
@@ -32,6 +33,7 @@ module.exports = {
   // },
   // 找模块路径
   resolve: {},
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -42,9 +44,10 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html')
+      title: 'Development',
+      // template: path.resolve(__dirname, 'public', 'index.html')
     }),
-    new CleanWebpackPlugin(),
+    new WebpackManifestPlugin(),
     new ConsoleLogOnBuildWebpackPlugin()
   ],
   devServer: {
