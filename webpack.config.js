@@ -17,14 +17,18 @@ module.exports = {
       // runtime: 'chunk-index',
       // publicPath: 'indexhello'
     },
-    pageOne: './src/pageOne/index.js',
-    pageTwo: './src/pageTwo/index.js',
-    pageThree: './src/pageThree/index.js'
+    dynamic: './src/dynamic.js'
+    // pageOne: './src/pageOne/index.js',
+    // pageTwo: './src/pageTwo/index.js',
+    // pageThree: './src/pageThree/index.js'
+    // pageTwo: { import: './src/pageTwo/index.js', dependOn: 'pageOne' },
+    // pageThree: { import: './src/pageThree/index.js', dependOn: 'pageOne' }
   },
   // 向硬盘写入编译文件，多文件也只能有一个output配置
   // 将输出文件目录改为build/
   output: {
     path: path.resolve(__dirname, 'build'),
+    filename: '[name].bundle.[contenthash].js',
     publicPath: '',
     clean: true
     // filename: '[name].out.js'
@@ -47,19 +51,30 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Development'
-      // template: path.resolve(__dirname, 'public', 'index.html')
+      title: 'Development',
+      template: path.resolve(__dirname, 'public', 'index.html')
     }),
     new WebpackManifestPlugin(),
     new ConsoleLogOnBuildWebpackPlugin()
   ],
   optimization: {
-    runtimeChunk: 'single'
+    // 模块id,默认下按着文件解析顺序来增量,加此配置,就不会因为文件的增减来修改模块id
+    // 推测,contenthash受[module.id,'文件内容']影响
+    moduleIds: 'deterministic',
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    }
   },
   devServer: {
     hot: true,
     liveReload: true,
-    static: './build',
-    publicPath: '/'
+    static: './build'
   }
 }
