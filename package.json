@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack serve",
     "build": "webpack",
+    "build:prod": "webpack --env goal=local --env production --progress",
     "server": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
